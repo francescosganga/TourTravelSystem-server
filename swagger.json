@@ -1,0 +1,90 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "Here you can build your TourTravelSystem app",
+        "version": "0.0.1",
+        "title": "TourTravelSystem Server API"
+    },
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/tours": {
+            "get": {
+                "tags": [
+                    "tours"
+                ],
+                "summary": "Get tours from db",
+                "description": "",
+                 "parameters": [
+                    {
+                        "in": "query",
+                        "name": "apiKey",
+                        "description": "api Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "city",
+                        "description": "destination city",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "country",
+                        "description": "destination country",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "hotel",
+                        "description": "hotel included",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "transfer",
+                        "description": "transfer included",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Tours"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Tours": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "boolean"
+                },
+                "data": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
